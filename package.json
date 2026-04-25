@@ -1,44 +1,93 @@
 {
-  "name": "dolores-ds",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@noey-17/dolores-ds",
+  "version": "0.1.0",
   "type": "module",
+  "description": "A React design system built on Untitled UI + Tailwind CSS v4 with chunky button shadows, a brand-blue palette, and a Storybook playground.",
+  "keywords": [
+    "react",
+    "design-system",
+    "components",
+    "ui",
+    "tailwindcss",
+    "untitled-ui",
+    "storybook"
+  ],
+  "license": "MIT",
+  "author": "Noah Hendrickson",
+  "homepage": "https://github.com/NoahHendrickson/dolores-ds#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoahHendrickson/dolores-ds.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NoahHendrickson/dolores-ds/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./style.css": "./dist/style.css",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:lib": "vite build --config vite.lib.config.ts",
+    "prepublishOnly": "npm run build:lib",
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@react-aria/utils": "^3.34.0",
     "@react-stately/utils": "^3.12.0",
-    "@tailwindcss/typography": "^0.5.19",
     "@untitledui/icons": "^0.0.22",
-    "input-otp": "^1.4.2",
-    "react": "^19.2.5",
+    "react": "^19.0.0",
     "react-aria": "^3.48.0",
     "react-aria-components": "^1.17.0",
-    "react-dom": "^19.2.5",
-    "react-hook-form": "^7.73.1",
-    "tailwind-merge": "^3.5.0",
-    "tailwindcss-animate": "^1.0.7",
-    "tailwindcss-react-aria-components": "^2.1.0"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "input-otp": {
+      "optional": true
+    },
+    "react-hook-form": {
+      "optional": true
+    }
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.1.2",
     "@eslint/js": "^10.0.1",
+    "@react-aria/utils": "^3.34.0",
+    "@react-stately/utils": "^3.12.0",
     "@storybook/addon-a11y": "^10.3.5",
     "@storybook/addon-docs": "^10.3.5",
     "@storybook/addon-mcp": "^0.6.0",
     "@storybook/addon-themes": "^10.3.5",
     "@storybook/addon-vitest": "^10.3.5",
     "@storybook/react-vite": "^10.3.5",
+    "@tailwindcss/typography": "^0.5.19",
     "@tailwindcss/vite": "^4.2.4",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@untitledui/icons": "^0.0.22",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/browser-playwright": "^4.1.5",
     "@vitest/coverage-v8": "^4.1.5",
@@ -47,12 +96,22 @@
     "eslint-plugin-react-refresh": "^0.5.2",
     "eslint-plugin-storybook": "^10.3.5",
     "globals": "^17.5.0",
+    "input-otp": "^1.4.2",
     "playwright": "^1.59.1",
+    "react": "^19.2.5",
+    "react-aria": "^3.48.0",
+    "react-aria-components": "^1.17.0",
+    "react-dom": "^19.2.5",
+    "react-hook-form": "^7.73.1",
     "storybook": "^10.3.5",
+    "tailwind-merge": "^3.5.0",
     "tailwindcss": "^4.2.4",
+    "tailwindcss-animate": "^1.0.7",
+    "tailwindcss-react-aria-components": "^2.1.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.58.2",
     "vite": "^8.0.10",
+    "vite-plugin-dts": "^4.5.4",
     "vitest": "^4.1.5"
   }
 }

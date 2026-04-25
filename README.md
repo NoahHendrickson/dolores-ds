@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# @noey-17/dolores-ds
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React design system built on Untitled UI + Tailwind CSS v4. Chunky button shadows, brand-blue palette, light/dark theming, and a Storybook playground.
 
-Currently, two official plugins are available:
+## Install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```sh
+npm install @noey-17/dolores-ds
+# peer deps
+npm install react react-dom react-aria react-aria-components @react-aria/utils @react-stately/utils @untitledui/icons tailwind-merge
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```tsx
+import { Button, Input } from '@noey-17/dolores-ds'
+import '@noey-17/dolores-ds/style.css'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+export function Example() {
+  return (
+    <div>
+      <Input label="Email" placeholder="olivia@untitledui.com" />
+      <Button color="primary">Save</Button>
+    </div>
+  )
+}
 ```
+
+## Light / dark mode
+
+Toggle the `dark-mode` class on the `<html>` element:
+
+```tsx
+document.documentElement.classList.toggle('dark-mode')
+```
+
+All color tokens (`bg-primary`, `text-secondary`, `border-brand`, etc.) reflow automatically.
+
+## Components
+
+Buttons (`Button`, `ButtonUtility`, `CloseButton`, `SocialButton`, `ButtonGroup`), Avatar, Badge (+ variants), Checkbox, RadioGroup, Toggle, Input (+ variants), TextArea, Select, MultiSelect, ComboBox, Slider, ProgressBar, Tag, Tooltip, Dropdown, Modal/Dialog. See the Storybook for the full catalog.
+
+## License
+
+MIT — see [Untitled UI's license](https://github.com/untitleduico/react) for the underlying components.
