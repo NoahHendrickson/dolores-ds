@@ -16,8 +16,12 @@ export const CheckboxBase = ({ className, isSelected, isDisabled, isIndeterminat
         <div
             className={cx(
                 "relative flex size-4 shrink-0 cursor-pointer appearance-none items-center justify-center rounded bg-primary ring-1 ring-primary ring-inset",
+                // Chunky button-style shadow (scaled): outer drop + 2px bottom shelf
+                "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_-2px_0_rgba(0,0,0,0.08)]",
                 size === "md" && "size-5 rounded-md",
-                (isSelected || isIndeterminate) && "bg-brand-solid ring-brand-solid",
+                // Selected: brand-fill + small top white glow + 1px dark rim + 2px bottom shelf
+                (isSelected || isIndeterminate) &&
+                    "bg-brand-solid ring-brand-solid shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_1px_2px_rgba(255,255,255,0.16),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-2px_0_rgba(0,0,0,0.2)]",
                 isDisabled && "cursor-not-allowed opacity-50",
                 isDisabled && !(isSelected || isIndeterminate) && "bg-tertiary",
                 isFocusVisible && "outline-2 outline-offset-2 outline-focus-ring",

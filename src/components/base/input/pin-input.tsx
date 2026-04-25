@@ -49,9 +49,9 @@ const Root = ({ className, size = "md", disabled = false, invalid = false, ...pr
 Root.displayName = "Root";
 
 const styles = {
-    xxxs: { group: "gap-1.5 h-9", slot: "size-9 px-3 py-2 text-sm rounded-lg font-medium text-placeholder/50", caret: "text-sm font-medium" },
-    xxs: { group: "gap-2 h-10", slot: "size-10 px-3 py-2 text-md rounded-lg font-medium text-placeholder/50", caret: "text-md font-medium" },
-    xs: { group: "gap-2 h-11", slot: "size-11 px-3.5 py-2.5 text-md rounded-lg font-medium text-placeholder/50", caret: "text-md font-medium" },
+    xxxs: { group: "gap-1.5 h-9", slot: "size-9 px-3 py-2 text-sm rounded-xl font-medium text-placeholder/50", caret: "text-sm font-medium" },
+    xxs: { group: "gap-2 h-10", slot: "size-10 px-3 py-2 text-md rounded-xl font-medium text-placeholder/50", caret: "text-md font-medium" },
+    xs: { group: "gap-2 h-11", slot: "size-11 px-3.5 py-2.5 text-md rounded-xl font-medium text-placeholder/50", caret: "text-md font-medium" },
     sm: { group: "gap-2 h-16.5", slot: "size-16 px-2 py-0.5 text-display-lg font-medium", caret: "text-display-lg font-medium" },
     md: { group: "gap-3 h-20.5", slot: "size-20 px-2 py-2.5 text-display-lg font-medium", caret: "text-display-lg font-medium" },
     lg: { group: "gap-3 h-24.5", slot: "size-24 px-2 py-3 text-display-xl font-medium", caret: "text-display-xl font-medium" },
@@ -94,9 +94,9 @@ const Slot = ({ index, className, ...props }: ComponentPropsWithRef<"div"> & { i
             aria-invalid={invalid}
             aria-label={"Enter digit " + (index + 1) + " of " + slots.length}
             className={cx(
-                "relative flex items-center justify-center rounded-xl bg-primary text-center text-placeholder/40 shadow-xs ring-1 ring-primary transition-[box-shadow,background-color] duration-100 ease-linear ring-inset",
+                "relative flex items-center justify-center rounded-xl bg-primary text-center text-placeholder/40 shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary transition-[box-shadow,background-color] duration-100 ease-linear ring-inset",
                 styles[size].slot,
-                isFocused && slot?.isActive && "ring-2 ring-brand outline-2 outline-offset-2 outline-brand",
+                isFocused && slot?.isActive && "ring-2 ring-brand outline-2 outline-offset-2 outline-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
                 slot?.char && "text-brand-tertiary_alt ring-2 ring-brand",
                 disabled && "opacity-50",
                 invalid && "text-error-primary ring-error_subtle",

@@ -47,7 +47,7 @@ export const NativeSelect = ({ label, hint, options, className, selectClassName,
                     aria-describedby={hintId}
                     aria-labelledby={selectId}
                     className={cx(
-                        "appearance-none rounded-lg bg-primary font-medium text-primary shadow-xs ring-1 ring-primary outline-hidden transition duration-100 ease-linear ring-inset placeholder:text-fg-quaternary focus-visible:ring-2 focus-visible:ring-brand disabled:cursor-not-allowed disabled:opacity-50",
+                        "appearance-none rounded-xl bg-primary font-medium text-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary outline-hidden transition duration-100 ease-linear ring-inset placeholder:text-fg-quaternary focus-visible:ring-2 focus-visible:ring-brand focus-visible:shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)] disabled:cursor-not-allowed disabled:opacity-50",
 
                         styles[size].root,
 

@@ -244,9 +244,9 @@ export const InputTags = ({
                 isInvalid={isInvalid}
                 className={({ isFocusWithin, isDisabled, isInvalid }) =>
                     cx(
-                        "group/input relative flex w-full items-center rounded-lg bg-primary shadow-xs ring-1 ring-primary outline-hidden transition duration-100 ease-linear ring-inset",
+                        "group/input relative flex w-full items-center rounded-xl bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary outline-hidden transition duration-100 ease-linear ring-inset",
                         isDisabled && "cursor-not-allowed opacity-50",
-                        isFocusWithin && !isDisabled && "ring-2 ring-brand",
+                        isFocusWithin && !isDisabled && "ring-2 ring-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
                         isInvalid && !isFocusWithin && "ring-error_subtle",
                         isInvalid && isFocusWithin && "ring-2 ring-error",
                         sizes[size].root,

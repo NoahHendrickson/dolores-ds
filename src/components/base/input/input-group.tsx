@@ -16,7 +16,7 @@ export const InputPrefix = ({ children, ...props }: InputPrefixProps) => (
     <span
         {...props}
         className={cx(
-            "flex text-tertiary shadow-xs ring-1 ring-border-primary ring-inset",
+            "flex text-tertiary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-border-primary ring-inset",
             // Styles when the prefix is within an `InputGroup`
             "in-data-input-wrapper:in-data-leading:-mr-px in-data-input-wrapper:in-data-leading:rounded-l-lg",
             "in-data-input-wrapper:in-data-trailing:-ml-px in-data-input-wrapper:in-data-trailing:rounded-r-lg",
@@ -109,10 +109,10 @@ export const InputGroup = ({ size = "md", prefix, leadingAddon, trailingAddon, l
                         // Used to apply styles based on the size of the input group within children
                         data-input-size={size}
                         className={cx(
-                            "group relative flex h-max w-full flex-row justify-center rounded-lg bg-primary transition-all duration-100 ease-linear",
+                            "group relative flex h-max w-full flex-row justify-center rounded-xl bg-primary transition-all duration-100 ease-linear",
 
                             // Only apply focus ring when child is select and input is focused
-                            "has-[&>select]:shadow-xs has-[&>select]:ring-1 has-[&>select]:ring-border-primary has-[&>select]:ring-inset has-[&>select]:has-[input:focus]:ring-2 has-[&>select]:has-[input:focus]:ring-border-brand",
+                            "has-[&>select]:shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] has-[&>select]:ring-1 has-[&>select]:ring-border-primary has-[&>select]:ring-inset has-[&>select]:has-[input:focus]:ring-2 has-[&>select]:has-[input:focus]:ring-border-brand",
 
                             isDisabled && "cursor-not-allowed",
                             isInvalid && "has-[&>select]:ring-border-error_subtle has-[&>select]:has-[input:focus]:ring-border-error",

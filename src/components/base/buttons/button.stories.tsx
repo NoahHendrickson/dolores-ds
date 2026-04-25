@@ -80,6 +80,51 @@ export const WithTrailingIcon: Story = {
   args: { iconTrailing: ArrowRight, children: 'Continue' },
 }
 
+export const IconOnly: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Pass `iconLeading` (or `iconTrailing`) without `children` and the Button auto-applies square `data-icon-only` padding. The chunky shadow + content translate carry over from the text variants on `primary` and `secondary`.',
+      },
+    },
+  },
+  render: () => {
+    const colors = [
+      'primary',
+      'secondary',
+      'tertiary',
+      'primary-destructive',
+      'secondary-destructive',
+      'tertiary-destructive',
+    ] as const
+    const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const
+
+    return (
+      <div className="flex flex-col gap-4">
+        <div className="flex items-center gap-3">
+          <span className="w-44 text-xs font-medium text-tertiary uppercase tracking-wide">color / size</span>
+          {sizes.map((size) => (
+            <span key={size} className="inline-flex w-10 justify-center text-xs font-medium text-tertiary">
+              {size}
+            </span>
+          ))}
+        </div>
+        {colors.map((color) => (
+          <div key={color} className="flex items-center gap-3">
+            <span className="w-44 text-sm text-secondary">{color}</span>
+            {sizes.map((size) => (
+              <span key={size} className="inline-flex w-10 justify-center">
+                <Button color={color} size={size} iconLeading={Plus} aria-label={`${color} ${size}`} />
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    )
+  },
+}
+
 export const Loading: Story = { args: { isLoading: true, children: 'Saving' } }
 export const LoadingWithText: Story = {
   args: { isLoading: true, showTextWhileLoading: true, children: 'Saving' },

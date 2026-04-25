@@ -37,8 +37,8 @@ const SelectValue = ({ isOpen, isFocused, isDisabled, size, placeholder, icon, r
         <AriaButton
             ref={ref}
             className={cx(
-                "relative flex w-full cursor-pointer items-center rounded-lg bg-primary shadow-xs ring-1 ring-primary outline-hidden transition duration-100 ease-linear ring-inset",
-                (isFocused || isOpen) && "ring-2 ring-brand",
+                "relative flex w-full cursor-pointer items-center rounded-xl bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary outline-hidden transition duration-100 ease-linear ring-inset",
+                (isFocused || isOpen) && "ring-2 ring-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
                 isDisabled && "cursor-not-allowed opacity-50",
             )}
         >

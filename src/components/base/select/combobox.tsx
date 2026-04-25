@@ -46,9 +46,9 @@ const ComboBoxValue = ({ size, shortcut, placeholder, shortcutClassName, icon: I
             {...otherProps}
             className={({ isFocusWithin, isDisabled }) =>
                 cx(
-                    "relative flex w-full items-center gap-2 rounded-lg bg-primary shadow-xs ring-1 ring-primary outline-hidden transition-shadow duration-100 ease-linear ring-inset",
+                    "relative flex w-full items-center gap-2 rounded-xl bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary outline-hidden transition-shadow duration-100 ease-linear ring-inset",
                     isDisabled && "cursor-not-allowed opacity-50",
-                    isFocusWithin && "ring-2 ring-brand",
+                    isFocusWithin && "ring-2 ring-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
 
                     // Icon styles
                     "*:data-icon:shrink-0 *:data-icon:text-fg-quaternary",

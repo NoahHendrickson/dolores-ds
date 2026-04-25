@@ -28,7 +28,7 @@ export const TextAreaBase = ({ className, size = "md", ...props }: TextAreaBaseP
             }
             className={(state) =>
                 cx(
-                    "w-full scroll-py-3 rounded-lg bg-primary text-primary shadow-xs ring-1 ring-primary transition duration-100 ease-linear ring-inset placeholder:text-placeholder autofill:rounded-lg autofill:text-primary focus:outline-hidden",
+                    "w-full scroll-py-3 rounded-xl bg-primary text-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary transition duration-100 ease-linear ring-inset placeholder:text-placeholder autofill:rounded-xl autofill:text-primary focus:outline-hidden",
 
                     size === "sm" && "p-3 text-sm",
                     size === "md" && "px-3.5 py-3 text-md",
@@ -36,7 +36,7 @@ export const TextAreaBase = ({ className, size = "md", ...props }: TextAreaBaseP
                     // Resize handle
                     "[&::-webkit-resizer]:bg-(image:--resize-handle-bg) [&::-webkit-resizer]:bg-contain dark:[&::-webkit-resizer]:bg-(image:--resize-handle-bg-dark)",
 
-                    state.isFocused && !state.isDisabled && "ring-2 ring-brand",
+                    state.isFocused && !state.isDisabled && "ring-2 ring-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
                     state.isDisabled && "cursor-not-allowed opacity-50",
                     state.isInvalid && "ring-error_subtle",
                     state.isInvalid && state.isFocused && "ring-2 ring-error",

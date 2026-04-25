@@ -72,9 +72,9 @@ export const InputNumberBase = ({
             ref={groupRef}
             className={({ isFocusWithin, isDisabled, isInvalid }) =>
                 cx(
-                    "relative flex w-full flex-row items-stretch rounded-lg bg-primary shadow-xs outline-1 -outline-offset-1 outline-primary transition-all duration-100 ease-linear",
+                    "relative flex w-full flex-row items-stretch rounded-xl bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] outline-1 -outline-offset-1 outline-primary transition-all duration-100 ease-linear",
 
-                    isFocusWithin && !isDisabled && "outline-2 -outline-offset-2 outline-brand",
+                    isFocusWithin && !isDisabled && "outline-2 -outline-offset-2 outline-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
 
                     // Disabled state styles
                     isDisabled && "cursor-not-allowed opacity-50 in-data-input-wrapper:opacity-100",
@@ -103,7 +103,7 @@ export const InputNumberBase = ({
                 ref={ref}
                 placeholder={placeholder}
                 className={cx(
-                    "m-0 w-full bg-transparent text-primary ring-0 outline-hidden placeholder:text-placeholder autofill:rounded-lg autofill:text-primary disabled:cursor-not-allowed",
+                    "m-0 w-full bg-transparent text-primary ring-0 outline-hidden placeholder:text-placeholder autofill:rounded-xl autofill:text-primary disabled:cursor-not-allowed",
                     styles[inputSize],
                     context?.inputClassName,
                     inputClassName,

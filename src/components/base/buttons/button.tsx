@@ -23,7 +23,7 @@ export const styles = sortCx({
     sizes: {
         xs: {
             root: [
-                "gap-1 rounded-lg px-2.5 py-1.5 text-sm font-semibold before:rounded-[7px] data-icon-only:p-2",
+                "gap-1 rounded-xl px-2.5 py-1.5 text-sm font-semibold before:rounded-[11px] data-icon-only:p-2",
                 "in-data-input-wrapper:px-3.5 in-data-input-wrapper:py-2.5 in-data-input-wrapper:data-icon-only:p-2.5",
                 "*:data-icon:size-4 *:data-icon:stroke-[2.25px]",
             ].join(" "),
@@ -31,24 +31,24 @@ export const styles = sortCx({
         },
         sm: {
             root: [
-                "gap-1 rounded-lg px-3 py-2 text-sm font-semibold before:rounded-[7px] data-icon-only:p-2",
+                "gap-1 rounded-xl px-3 py-2 text-sm font-semibold before:rounded-[11px] data-icon-only:p-2",
                 "in-data-input-wrapper:px-3.5 in-data-input-wrapper:py-2.5 in-data-input-wrapper:data-icon-only:p-2.5",
             ].join(" "),
             linkRoot: "gap-1 *:data-text:underline-offset-3",
         },
         md: {
             root: [
-                "gap-1 rounded-lg px-3.5 py-2.5 text-sm font-semibold before:rounded-[7px] data-icon-only:p-2.5",
+                "gap-1 rounded-xl px-3.5 py-2.5 text-sm font-semibold before:rounded-[11px] data-icon-only:p-2.5",
                 "in-data-input-wrapper:gap-1.5 in-data-input-wrapper:px-4 in-data-input-wrapper:text-md in-data-input-wrapper:data-icon-only:p-3",
             ].join(" "),
             linkRoot: "gap-1 *:data-text:underline-offset-4",
         },
         lg: {
-            root: "gap-1.5 rounded-lg px-4 py-2.5 text-md font-semibold before:rounded-[7px] data-icon-only:p-3",
+            root: "gap-1.5 rounded-xl px-4 py-2.5 text-md font-semibold before:rounded-[11px] data-icon-only:p-3",
             linkRoot: "gap-1.5 *:data-text:underline-offset-4",
         },
         xl: {
-            root: "gap-1.5 rounded-lg px-4.5 py-3 text-md font-semibold before:rounded-[7px] data-icon-only:p-3.5",
+            root: "gap-1.5 rounded-xl px-4.5 py-3 text-md font-semibold before:rounded-[11px] data-icon-only:p-3.5",
             linkRoot: "gap-1.5 *:data-text:underline-offset-4",
         },
     },
@@ -61,6 +61,8 @@ export const styles = sortCx({
                 "before:inset-0 before:rounded-[inherit] before:border-2 before:border-white/12 before:mask-b-from-0%",
                 // Chunky button shadow: outer drop + inset top white glow + 1px dark inner rim + inset bottom 4px dark depth
                 "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_4px_8px_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.2)]",
+                // Compensate for the 4px bottom shelf: shift content up so it visually centers above the shelf.
+                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
                 // Icon styles
                 "*:data-icon:text-white/60 hover:*:data-icon:text-white/70",
             ].join(" "),
@@ -70,6 +72,8 @@ export const styles = sortCx({
                 "bg-primary text-secondary ring-1 ring-primary ring-inset hover:bg-primary_hover hover:text-secondary_hover data-loading:bg-primary_hover",
                 // Chunky button shadow: outer drop + 1px dark inner rim + inset bottom 4px dark depth
                 "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.12)]",
+                // Compensate for the 4px bottom shelf: shift content up so it visually centers above the shelf.
+                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
                 // Icon styles
                 "*:data-icon:text-fg-quaternary hover:*:data-icon:text-fg-quaternary_hover",
             ].join(" "),
@@ -101,16 +105,24 @@ export const styles = sortCx({
         },
         "primary-destructive": {
             root: [
-                "bg-error-solid text-white shadow-xs-skeuomorphic ring-1 ring-transparent outline-error ring-inset hover:bg-error-solid_hover data-loading:bg-error-solid_hover",
-                // Inner border gradient
-                "before:absolute before:inset-px before:border before:border-white/12 before:mask-b-from-0%",
+                "bg-error-solid text-white outline-error hover:bg-error-solid_hover data-loading:bg-error-solid_hover",
+                // Inner 2px white/12 highlight masked to fade out at the bottom
+                "before:inset-0 before:rounded-[inherit] before:border-2 before:border-white/12 before:mask-b-from-0%",
+                // Chunky button shadow: outer drop + inset top white glow + 1px dark inner rim + inset bottom 4px dark depth
+                "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_4px_8px_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.2)]",
+                // Compensate for the 4px bottom shelf
+                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
                 // Icon styles
                 "*:data-icon:text-white/60 hover:*:data-icon:text-white/70",
             ].join(" "),
         },
         "secondary-destructive": {
             root: [
-                "bg-primary text-error-primary shadow-xs-skeuomorphic ring-1 ring-error_subtle outline-error ring-inset hover:bg-error-primary hover:text-error-primary_hover data-loading:bg-error-primary",
+                "bg-primary text-error-primary ring-1 ring-error_subtle outline-error ring-inset hover:bg-error-primary hover:text-error-primary_hover data-loading:bg-error-primary",
+                // Chunky button shadow: outer drop + 1px dark inner rim + inset bottom 4px dark depth
+                "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.12)]",
+                // Compensate for the 4px bottom shelf
+                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
                 // Icon styles
                 "*:data-icon:text-fg-error-secondary hover:*:data-icon:text-fg-error-primary",
             ].join(" "),
