@@ -1,0 +1,220 @@
+import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks'
+
+<Meta title="Foundations/Colors" />
+
+# Colors
+
+Design tokens defined in `src/styles/theme.css` and exposed as CSS variables. Toolbar's theme switcher swaps light/dark by toggling `class="dark-mode"` on `<html>`, so every swatch on this page reflects the current mode.
+
+Use these via Tailwind utilities (`bg-primary`, `text-secondary`, `border-error`, etc.) — never hard-coded hex.
+
+---
+
+## Brand scale
+
+Primary brand palette. Each step is a CSS var (`var(--color-brand-N)`) and the matching Tailwind utility is `bg-brand-N` / `text-brand-N`.
+
+<ColorPalette>
+  <ColorItem
+    title="Brand"
+    subtitle="50 (lightest) → 950 (darkest)"
+    colors={{
+      50: 'var(--color-brand-50)',
+      100: 'var(--color-brand-100)',
+      200: 'var(--color-brand-200)',
+      300: 'var(--color-brand-300)',
+      400: 'var(--color-brand-400)',
+      500: 'var(--color-brand-500)',
+      600: 'var(--color-brand-600)',
+      700: 'var(--color-brand-700)',
+      800: 'var(--color-brand-800)',
+      900: 'var(--color-brand-900)',
+      950: 'var(--color-brand-950)',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## Background
+
+Semantic surface colors. Use these on container/page backgrounds.
+
+<ColorPalette>
+  <ColorItem
+    title="bg-*"
+    subtitle="Neutral surfaces"
+    colors={{
+      'bg-primary': 'var(--color-bg-primary)',
+      'bg-primary_alt': 'var(--color-bg-primary_alt)',
+      'bg-primary_hover': 'var(--color-bg-primary_hover)',
+      'bg-secondary': 'var(--color-bg-secondary)',
+      'bg-secondary_alt': 'var(--color-bg-secondary_alt)',
+      'bg-secondary_hover': 'var(--color-bg-secondary_hover)',
+      'bg-tertiary': 'var(--color-bg-tertiary)',
+      'bg-quaternary': 'var(--color-bg-quaternary)',
+      'bg-active': 'var(--color-bg-active)',
+      'bg-overlay': 'var(--color-bg-overlay)',
+    }}
+  />
+  <ColorItem
+    title="bg-*-solid"
+    subtitle="Filled / solid surfaces (e.g. primary buttons)"
+    colors={{
+      'bg-primary-solid': 'var(--color-bg-primary-solid)',
+      'bg-secondary-solid': 'var(--color-bg-secondary-solid)',
+      'bg-brand-solid': 'var(--color-bg-brand-solid)',
+      'bg-brand-solid_hover': 'var(--color-bg-brand-solid_hover)',
+      'bg-error-solid': 'var(--color-bg-error-solid)',
+      'bg-error-solid_hover': 'var(--color-bg-error-solid_hover)',
+      'bg-warning-solid': 'var(--color-bg-warning-solid)',
+      'bg-success-solid': 'var(--color-bg-success-solid)',
+    }}
+  />
+  <ColorItem
+    title="bg-brand-*"
+    subtitle="Brand-tinted backgrounds"
+    colors={{
+      'bg-brand-primary': 'var(--color-bg-brand-primary)',
+      'bg-brand-primary_alt': 'var(--color-bg-brand-primary_alt)',
+      'bg-brand-secondary': 'var(--color-bg-brand-secondary)',
+      'bg-brand-section': 'var(--color-bg-brand-section)',
+      'bg-brand-section_subtle': 'var(--color-bg-brand-section_subtle)',
+    }}
+  />
+  <ColorItem
+    title="Status backgrounds"
+    subtitle="Error / Warning / Success tints"
+    colors={{
+      'bg-error-primary': 'var(--color-bg-error-primary)',
+      'bg-error-secondary': 'var(--color-bg-error-secondary)',
+      'bg-warning-primary': 'var(--color-bg-warning-primary)',
+      'bg-warning-secondary': 'var(--color-bg-warning-secondary)',
+      'bg-success-primary': 'var(--color-bg-success-primary)',
+      'bg-success-secondary': 'var(--color-bg-success-secondary)',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## Text
+
+Use for headings, body copy, labels, and helper text.
+
+<ColorPalette>
+  <ColorItem
+    title="text-*"
+    subtitle="Neutral text scale (primary = strongest, quaternary = weakest)"
+    colors={{
+      'text-primary': 'var(--color-text-primary)',
+      'text-secondary': 'var(--color-text-secondary)',
+      'text-secondary_hover': 'var(--color-text-secondary_hover)',
+      'text-tertiary': 'var(--color-text-tertiary)',
+      'text-tertiary_hover': 'var(--color-text-tertiary_hover)',
+      'text-quaternary': 'var(--color-text-quaternary)',
+      'text-placeholder': 'var(--color-text-placeholder)',
+      'text-white': 'var(--color-text-white)',
+    }}
+  />
+  <ColorItem
+    title="text-brand-*"
+    subtitle="Brand-emphasis text"
+    colors={{
+      'text-brand-primary': 'var(--color-text-brand-primary)',
+      'text-brand-secondary': 'var(--color-text-brand-secondary)',
+      'text-brand-secondary_hover': 'var(--color-text-brand-secondary_hover)',
+      'text-brand-tertiary': 'var(--color-text-brand-tertiary)',
+      'text-brand-tertiary_alt': 'var(--color-text-brand-tertiary_alt)',
+    }}
+  />
+  <ColorItem
+    title="text on brand"
+    subtitle="For text rendered on top of brand-solid surfaces"
+    colors={{
+      'text-primary_on-brand': 'var(--color-text-primary_on-brand)',
+      'text-secondary_on-brand': 'var(--color-text-secondary_on-brand)',
+      'text-tertiary_on-brand': 'var(--color-text-tertiary_on-brand)',
+      'text-quaternary_on-brand': 'var(--color-text-quaternary_on-brand)',
+    }}
+  />
+  <ColorItem
+    title="Status text"
+    subtitle="Error / Warning / Success body copy"
+    colors={{
+      'text-error-primary': 'var(--color-text-error-primary)',
+      'text-error-primary_hover': 'var(--color-text-error-primary_hover)',
+      'text-warning-primary': 'var(--color-text-warning-primary)',
+      'text-success-primary': 'var(--color-text-success-primary)',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## Foreground
+
+Used for icon glyphs and non-text vector content.
+
+<ColorPalette>
+  <ColorItem
+    title="fg-*"
+    subtitle="Neutral icon scale"
+    colors={{
+      'fg-primary': 'var(--color-fg-primary)',
+      'fg-secondary': 'var(--color-fg-secondary)',
+      'fg-secondary_hover': 'var(--color-fg-secondary_hover)',
+      'fg-tertiary': 'var(--color-fg-tertiary)',
+      'fg-tertiary_hover': 'var(--color-fg-tertiary_hover)',
+      'fg-quaternary': 'var(--color-fg-quaternary)',
+      'fg-quaternary_hover': 'var(--color-fg-quaternary_hover)',
+      'fg-white': 'var(--color-fg-white)',
+    }}
+  />
+  <ColorItem
+    title="fg-brand-*"
+    subtitle="Brand-emphasis icons"
+    colors={{
+      'fg-brand-primary': 'var(--color-fg-brand-primary)',
+      'fg-brand-primary_alt': 'var(--color-fg-brand-primary_alt)',
+      'fg-brand-secondary': 'var(--color-fg-brand-secondary)',
+      'fg-brand-secondary_alt': 'var(--color-fg-brand-secondary_alt)',
+      'fg-brand-secondary_hover': 'var(--color-fg-brand-secondary_hover)',
+    }}
+  />
+  <ColorItem
+    title="Status icons"
+    subtitle="Error / Warning / Success glyphs"
+    colors={{
+      'fg-error-primary': 'var(--color-fg-error-primary)',
+      'fg-error-secondary': 'var(--color-fg-error-secondary)',
+      'fg-warning-primary': 'var(--color-fg-warning-primary)',
+      'fg-warning-secondary': 'var(--color-fg-warning-secondary)',
+      'fg-success-primary': 'var(--color-fg-success-primary)',
+      'fg-success-secondary': 'var(--color-fg-success-secondary)',
+    }}
+  />
+</ColorPalette>
+
+---
+
+## Border
+
+For dividers, outlines, and ring shadows.
+
+<ColorPalette>
+  <ColorItem
+    title="border-*"
+    subtitle="Neutral borders + brand + error states"
+    colors={{
+      'border-primary': 'var(--color-border-primary)',
+      'border-secondary': 'var(--color-border-secondary)',
+      'border-secondary_alt': 'var(--color-border-secondary_alt)',
+      'border-tertiary': 'var(--color-border-tertiary)',
+      'border-brand': 'var(--color-border-brand)',
+      'border-brand_alt': 'var(--color-border-brand_alt)',
+      'border-error': 'var(--color-border-error)',
+      'border-error_subtle': 'var(--color-border-error_subtle)',
+    }}
+  />
+</ColorPalette>
