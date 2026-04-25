@@ -43,7 +43,8 @@ export const ToggleBase = ({ className, isHovered, isDisabled, isFocusVisible, i
         <div
             className={cx(
                 "cursor-pointer rounded-full bg-tertiary ring-[0.5px] ring-secondary outline-focus-ring transition duration-150 ease-linear ring-inset",
-                isSelected && "bg-brand-solid",
+                // Selected: brand fill + soft top-left white highlight for the glassy on-state
+                isSelected && "bg-brand-solid shadow-[inset_1px_1px_2px_0_rgba(255,255,255,0.25)]",
                 isSelected && isHovered && "bg-brand-solid_hover",
                 isDisabled && "cursor-not-allowed opacity-50",
                 isFocusVisible && "outline-2 outline-offset-2",
@@ -56,7 +57,8 @@ export const ToggleBase = ({ className, isHovered, isDisabled, isFocusVisible, i
         >
             <div
                 style={{
-                    transition: "transform 0.15s ease-in-out, translate 0.15s ease-in-out, border-color 0.1s linear, background-color 0.1s linear",
+                    transition:
+                        "transform 0.15s ease-in-out, translate 0.15s ease-in-out, border-color 0.1s linear, background-color 0.1s linear, box-shadow 0.15s ease-in-out",
                 }}
                 className={cx(
                     "rounded-full bg-fg-white shadow-sm",
@@ -65,6 +67,10 @@ export const ToggleBase = ({ className, isHovered, isDisabled, isFocusVisible, i
                     slim && "border border-toggle-border",
                     slim && isSelected && "border-toggle-slim-border_pressed",
                     slim && isSelected && isHovered && "border-toggle-slim-border_pressed-hover",
+
+                    // Selected knob: keep shadow-sm outer drop + add a small bottom inset shelf for depth.
+                    isSelected &&
+                        "shadow-[0_1px_3px_rgba(0,0,0,0.1),0_1px_2px_-1px_rgba(0,0,0,0.1),inset_0_-1.5px_0_rgba(0,0,0,0.16)]",
 
                     classes.switch,
                 )}

@@ -70,6 +70,9 @@ export { Dropdown } from './components/base/dropdown/dropdown'
 // Modal / Dialog
 export { Modal, ModalOverlay, Dialog, DialogTrigger } from './components/application/modals/modal'
 
+// Tabs
+export { Tabs, TabList, Tab, TabPanel } from './components/application/tabs/tabs'
+
 // Utilities
 export { cx, sortCx } from './utils/cx'
 export { isReactComponent } from './utils/is-react-component'
