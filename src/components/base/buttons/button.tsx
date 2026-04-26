@@ -62,7 +62,7 @@ export const styles = sortCx({
                 // Chunky button shadow: outer drop + inset top white glow + 1px dark inner rim + inset bottom 4px dark depth
                 "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_4px_8px_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.2)]",
                 // Compensate for the 4px bottom shelf: shift content up so it visually centers above the shelf.
-                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
+                "*:data-text:-translate-y-[1px] *:data-icon:-translate-y-[1px]",
                 // Icon styles
                 "*:data-icon:text-white/60 hover:*:data-icon:text-white/70",
             ].join(" "),
@@ -73,7 +73,7 @@ export const styles = sortCx({
                 // Chunky button shadow: outer drop + 1px dark inner rim + inset bottom 4px dark depth
                 "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.12)]",
                 // Compensate for the 4px bottom shelf: shift content up so it visually centers above the shelf.
-                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
+                "*:data-text:-translate-y-[1px] *:data-icon:-translate-y-[1px]",
                 // Icon styles
                 "*:data-icon:text-fg-quaternary hover:*:data-icon:text-fg-quaternary_hover",
             ].join(" "),
@@ -111,7 +111,7 @@ export const styles = sortCx({
                 // Chunky button shadow: outer drop + inset top white glow + 1px dark inner rim + inset bottom 4px dark depth
                 "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_4px_8px_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.2)]",
                 // Compensate for the 4px bottom shelf
-                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
+                "*:data-text:-translate-y-[1px] *:data-icon:-translate-y-[1px]",
                 // Icon styles
                 "*:data-icon:text-white/60 hover:*:data-icon:text-white/70",
             ].join(" "),
@@ -122,7 +122,7 @@ export const styles = sortCx({
                 // Chunky button shadow: outer drop + 1px dark inner rim + inset bottom 4px dark depth
                 "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.12)]",
                 // Compensate for the 4px bottom shelf
-                "*:data-text:-translate-y-[2px] *:data-icon:-translate-y-[2px]",
+                "*:data-text:-translate-y-[1px] *:data-icon:-translate-y-[1px]",
                 // Icon styles
                 "*:data-icon:text-fg-error-secondary hover:*:data-icon:text-fg-error-primary",
             ].join(" "),
