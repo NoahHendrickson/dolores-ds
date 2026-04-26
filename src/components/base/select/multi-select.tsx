@@ -1,5 +1,5 @@
 import type { ReactNode, RefAttributes } from "react";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
 import { ChevronDown, SearchLg } from "@untitledui/icons";
 import { useFilter } from "react-aria";
 import type { Selection } from "react-aria-components";
@@ -13,6 +13,7 @@ import {
     Popover as AriaPopover,
     SearchField as AriaSearchField,
 } from "react-aria-components";
+import { BadgeWithButton } from "@/components/base/badges/badges";
 import { Button } from "@/components/base/buttons/button";
 import { HintText } from "@/components/base/input/hint-text";
 import { Label } from "@/components/base/input/label";
@@ -184,14 +185,56 @@ const MultiSelectRoot = ({
     const triggerRef = useRef<HTMLButtonElement>(null);
     const [popoverWidth, setPopoverWidth] = useState("");
 
+    const isControlled = selectedKeys !== undefined;
+    const [internalKeys, setInternalKeys] = useState<Selection>(defaultSelectedKeys ?? new Set());
+    const currentKeys = isControlled ? selectedKeys : internalKeys;
+
+    const handleSelectionChange = useCallback(
+        (keys: Selection) => {
+            if (!isControlled) setInternalKeys(keys);
+            onSelectionChange?.(keys);
+        },
+        [isControlled, onSelectionChange],
+    );
+
     const onResize = useCallback(() => {
         if (!triggerRef.current) return;
         const rect = triggerRef.current.getBoundingClientRect();
         setPopoverWidth(rect.width + "px");
     }, []);
 
-    const selectedCount = selectedKeys instanceof Set ? selectedKeys.size : selectedKeys === "all" ? (items?.length ?? 0) : 0;
+    const selectedCount = currentKeys instanceof Set ? currentKeys.size : currentKeys === "all" ? (items?.length ?? 0) : 0;
     const hasSelection = selectedCount > 0;
+
+    const selectedItemsList = useMemo<SelectItemType[]>(() => {
+        if (!items || !hasSelection) return [];
+        if (currentKeys === "all") return items;
+        if (currentKeys instanceof Set) {
+            const itemMap = new Map(items.map((i) => [i.id, i]));
+            return Array.from(currentKeys)
+                .map((k) => itemMap.get(k as string | number))
+                .filter((x): x is SelectItemType => Boolean(x));
+        }
+        return [];
+    }, [currentKeys, items, hasSelection]);
+
+    const handleRemove = useCallback(
+        (id: string | number) => {
+            let next: Selection;
+            if (currentKeys === "all") {
+                const allIds = items?.map((i) => i.id) ?? [];
+                next = new Set(allIds.filter((k) => k !== id));
+            } else if (currentKeys instanceof Set) {
+                const updated = new Set(currentKeys);
+                updated.delete(id);
+                next = updated;
+            } else {
+                return;
+            }
+            handleSelectionChange(next);
+        },
+        [currentKeys, items, handleSelectionChange],
+    );
 
     const handleClearSearch = useCallback(() => {
         setSearchValue("");
@@ -207,42 +250,67 @@ const MultiSelectRoot = ({
                 )}
 
                 <AriaDialogTrigger>
-                    <AriaButton
-                        ref={triggerRef}
-                        isDisabled={isDisabled}
-                        onClick={onResize}
-                        className={(state) =>
-                            cx(
-                                "relative flex w-full cursor-pointer items-center rounded-xl bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary outline-hidden transition duration-100 ease-linear ring-inset",
-                                (state.isFocusVisible || state.isPressed) && "ring-2 ring-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
-                                state.isDisabled && "cursor-not-allowed opacity-50",
-                            )
-                        }
-                    >
-                        <span
+                    <div className="relative w-full">
+                        <AriaButton
+                            ref={triggerRef}
+                            isDisabled={isDisabled}
+                            onClick={onResize}
+                            aria-label={label || placeholder}
+                            className={(state) =>
+                                cx(
+                                    "absolute inset-0 cursor-pointer rounded-xl bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] outline-hidden ring-1 ring-primary ring-inset transition duration-100 ease-linear",
+                                    (state.isFocusVisible || state.isPressed) &&
+                                        "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)] ring-2 ring-brand",
+                                    state.isDisabled && "cursor-not-allowed opacity-50",
+                                )
+                            }
+                        />
+                        <div
                             className={cx(
-                                "flex w-full items-center truncate text-left",
+                                "pointer-events-none relative flex w-full items-center text-left",
                                 sizes[size].root,
                                 "*:data-icon:shrink-0 *:data-icon:text-fg-quaternary",
                             )}
                         >
-                            {hasSelection ? (
-                                <span className={cx("flex items-center", sizes[size].textContainer)}>
-                                    <span className={cx("font-medium text-primary", sizes[size].text)}>
-                                        {selectedCountFormatter ? selectedCountFormatter(selectedCount) : `${selectedCount} selected`}
-                                    </span>
-                                    {supportingText && <span className={cx("text-tertiary", sizes[size].text)}>{supportingText}</span>}
-                                </span>
-                            ) : (
-                                <span className={cx("text-placeholder", sizes[size].text)}>{placeholder}</span>
-                            )}
+                            <span className={cx("flex flex-1 flex-wrap items-center", sizes[size].textContainer)}>
+                                {hasSelection ? (
+                                    selectedItemsList.length > 0 ? (
+                                        <>
+                                            {selectedItemsList.map((item) => (
+                                                <BadgeWithButton
+                                                    key={item.id}
+                                                    size={size}
+                                                    color="gray"
+                                                    buttonLabel={`Remove ${item.label || String(item.id)}`}
+                                                    onButtonClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleRemove(item.id);
+                                                    }}
+                                                    className="pointer-events-none [&>button]:pointer-events-auto"
+                                                >
+                                                    {item.label || String(item.id)}
+                                                </BadgeWithButton>
+                                            ))}
+                                            {supportingText && (
+                                                <span className={cx("pointer-events-none text-tertiary", sizes[size].text)}>{supportingText}</span>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <span className={cx("pointer-events-none font-medium text-primary", sizes[size].text)}>
+                                            {selectedCountFormatter ? selectedCountFormatter(selectedCount) : `${selectedCount} selected`}
+                                        </span>
+                                    )
+                                ) : (
+                                    <span className={cx("pointer-events-none text-placeholder", sizes[size].text)}>{placeholder}</span>
+                                )}
+                            </span>
 
                             <ChevronDown
                                 aria-hidden="true"
-                                className={cx("ml-auto shrink-0 text-fg-quaternary", size === "lg" ? "size-5" : "size-4 stroke-[2.25px]")}
+                                className={cx("pointer-events-none ml-2 shrink-0 text-fg-quaternary", size === "lg" ? "size-5" : "size-4 stroke-[2.25px]")}
                             />
-                        </span>
-                    </AriaButton>
+                        </div>
+                    </div>
 
                     <AriaPopover
                         placement="bottom"
@@ -283,9 +351,8 @@ const MultiSelectRoot = ({
                                     aria-label={label || "Options"}
                                     items={items}
                                     selectionMode="multiple"
-                                    selectedKeys={selectedKeys}
-                                    defaultSelectedKeys={defaultSelectedKeys}
-                                    onSelectionChange={onSelectionChange}
+                                    selectedKeys={currentKeys}
+                                    onSelectionChange={handleSelectionChange}
                                     renderEmptyState={() => (
                                         <MultiSelectEmptyState
                                             title={emptyStateTitle}
