@@ -45,7 +45,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {}
 export const Pill: Story = { args: { type: 'pill-color' } }
 export const Solid: Story = { args: { type: 'color' } }
-export const Modern: Story = { args: { type: 'modern' } }
+export const Modern: Story = { args: { type: 'modern', color: 'gray' } }
 
 export const ColorRow: Story = {
   render: (args) => (

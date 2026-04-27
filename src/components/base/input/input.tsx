@@ -95,7 +95,7 @@ export const InputBase = ({
             ref={groupRef}
             className={({ isFocusWithin, isDisabled, isInvalid }) =>
                 cx(
-                    "group/input relative flex w-full flex-row place-content-center place-items-center rounded-xl bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary transition-shadow duration-100 ease-linear ring-inset",
+                    "group/input relative flex w-full flex-row place-content-center place-items-center rounded-lg bg-primary shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.08)] ring-1 ring-primary transition-shadow duration-100 ease-linear ring-inset",
 
                     isFocusWithin && !isDisabled && "ring-2 ring-brand shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(81,156,255,0.16)]",
 
@@ -129,7 +129,7 @@ export const InputBase = ({
                 type={type === "password" && isPasswordVisible ? "text" : type}
                 placeholder={placeholder}
                 className={cx(
-                    "m-0 w-full bg-transparent text-primary ring-0 outline-hidden placeholder:text-placeholder autofill:rounded-xl autofill:text-primary disabled:cursor-not-allowed",
+                    "m-0 w-full bg-transparent text-primary ring-0 outline-hidden placeholder:text-placeholder autofill:rounded-lg autofill:text-primary disabled:cursor-not-allowed",
                     sizes[inputSize].root,
                     context?.inputClassName,
                     inputClassName,
