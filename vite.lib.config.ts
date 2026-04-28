@@ -46,6 +46,7 @@ export default defineConfig({
         '@react-aria/utils',
         '@react-stately/utils',
         '@untitledui/icons',
+        '@phosphor-icons/react',
         'input-otp',
         'react-hook-form',
         'tailwind-merge',
