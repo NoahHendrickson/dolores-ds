@@ -705,7 +705,7 @@
         --color-fg-brand-secondary_alt: var(--color-neutral-600);
         --color-fg-brand-secondary_hover: var(--color-neutral-500);
 
-        --color-bg-primary: var(--color-neutral-950);
+        --color-bg-primary: rgb(28 30 31); /* #1C1E1F */
         --color-bg-tertiary: var(--color-neutral-800);
         --color-bg-brand-primary: var(--color-brand-500);
         --color-bg-error-secondary: var(--color-red-600);
@@ -724,7 +724,7 @@
         --color-bg-brand-solid_hover: var(--color-brand-500);
         --color-bg-error-primary: var(--color-red-950);
         --color-bg-brand-secondary: var(--color-brand-600);
-        --color-bg-secondary: var(--color-neutral-900);
+        --color-bg-secondary: rgb(39 43 46); /* #272B2E */
         --color-bg-quaternary: var(--color-neutral-700);
         --color-bg-primary_alt: var(--color-bg-secondary);
         --color-bg-brand-primary_alt: var(--color-bg-secondary);

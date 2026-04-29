@@ -71,7 +71,8 @@ export const styles = sortCx({
             root: [
                 "bg-primary text-secondary ring-1 ring-primary ring-inset hover:bg-primary_hover hover:text-secondary_hover data-loading:bg-primary_hover",
                 // Chunky button shadow: outer drop + 1px dark inner rim + inset bottom 4px dark depth
-                "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.09)]",
+                // Dark mode flips the bottom shelf to white/9 so it reads as a highlight on a dark surface, not a hole.
+                "shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(0,0,0,0.09)] dark:shadow-[0_1px_2px_rgba(0,0,0,0.05),inset_0_0_0_1px_rgba(0,0,0,0.24),inset_0_-4px_0_rgba(255,255,255,0.09)]",
                 // Compensate for the 4px bottom shelf: shift content up so it visually centers above the shelf.
                 "*:data-text:-translate-y-[1px] *:data-icon:-translate-y-[1px]",
                 // Icon styles
