@@ -1,6 +1,6 @@
 {
   "name": "@noey-17/dolores-ds",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "type": "module",
   "description": "A React design system built on Untitled UI + Tailwind CSS v4 with chunky button shadows, a brand-blue palette, and a Storybook playground.",
   "keywords": [
