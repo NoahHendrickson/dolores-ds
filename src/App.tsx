@@ -46,7 +46,7 @@ function Tile({
   return (
     <div
       className={cx(
-        'flex flex-col rounded-3xl bg-primary p-6 shadow-sm md:p-8',
+        'flex flex-col rounded-3xl bg-secondary p-6 shadow-sm md:p-8',
         className,
       )}
     >
@@ -130,7 +130,7 @@ function FeaturedDialogTile({ className }: { className?: string }) {
         </div>
         <CloseButton
           size="sm"
-          className="rounded-full bg-tertiary hover:bg-quaternary"
+          className="rounded-full bg-tertiary hover:bg-quaternary dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
         />
       </div>
       <div className="h-px w-full bg-border-secondary" />
@@ -275,7 +275,7 @@ function DarkModeTile({ className }: { className?: string }) {
 
 function ConfirmDialogContent({ close }: { close: () => void }) {
   return (
-    <div className="relative flex w-full max-w-md flex-col overflow-hidden rounded-2xl bg-primary shadow-xl outline-hidden">
+    <div className="relative flex w-full max-w-md flex-col overflow-hidden rounded-2xl bg-secondary shadow-xl outline-hidden">
       <div className="flex w-full items-start gap-2 py-3 pr-3 pl-6">
         <div className="flex min-w-0 flex-1 flex-col gap-0.5">
           <h2 className="text-md font-semibold text-primary">
@@ -286,7 +286,7 @@ function ConfirmDialogContent({ close }: { close: () => void }) {
         <CloseButton
           size="sm"
           onPress={close}
-          className="rounded-full bg-tertiary hover:bg-quaternary"
+          className="rounded-full bg-tertiary hover:bg-quaternary dark:bg-white/5 dark:text-white/80 dark:hover:bg-white/10 dark:hover:text-white"
         />
       </div>
       <div className="h-px w-full bg-border-secondary" />
@@ -307,7 +307,7 @@ function ConfirmDialogContent({ close }: { close: () => void }) {
 
 function DestructiveDialogContent({ close }: { close: () => void }) {
   return (
-    <div className="relative flex w-full max-w-md flex-col overflow-hidden rounded-2xl bg-primary shadow-xl outline-hidden">
+    <div className="relative flex w-full max-w-md flex-col overflow-hidden rounded-2xl bg-secondary shadow-xl outline-hidden">
       <div className="flex flex-col gap-4 p-6">
         <FeaturedIcon
           icon={AlertTriangle}
@@ -367,7 +367,7 @@ function MoreDialogsTile({ className }: { className?: string }) {
 
 function App() {
   return (
-    <div className="min-h-screen bg-secondary px-3 py-6 md:px-6 md:py-10">
+    <div className="min-h-screen bg-primary px-3 py-6 md:px-6 md:py-10">
       <main className="mx-auto flex max-w-7xl flex-col gap-3">
         {/* Hero row: hero + 4 stats in a 2x2 */}
         <section className="grid grid-cols-12 gap-3 md:auto-rows-fr md:grid-rows-2">
